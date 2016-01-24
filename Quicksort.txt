@@ -1,0 +1,23 @@
+def quicksort(arr,start,end):
+    if start<end:
+        pIndex=partition(arr,start,end)
+        quicksort(arr,start,pIndex-1)
+        quicksort(arr,pIndex+1,end)
+    return arr
+        
+    
+    
+def partition(arr,start,end):
+    pivot=arr[end]
+    movepivot=start
+    for i in range(start,end):
+        if arr[i]<=pivot:
+            arr[i],arr[movepivot]=arr[movepivot],arr[i]
+            movepivot=movepivot+1
+    arr[movepivot],arr[end]=arr[end],arr[movepivot]
+    return movepivot
+    
+    
+    
+a=[4,9,11,3,2,1,1,16,1,14,12,10,15,19]
+print quicksort(a,0,len(a)-1)
